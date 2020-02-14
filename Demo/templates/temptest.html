@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模板语法</title>
+</head>
+<body>
+<h1>模板语法</h1>
+
+姓名：{{ name }}<br>
+<h5>default</h5>
+姓名：{{ name | default:"小可爱" }}
+年龄：{{ age}}<br>
+<h4>date格式化时间</h4>
+时间：{{now_time | date:"Y-m-d H:m:s " }}<br>
+<h3>过滤器add年龄加两岁</h3>
+<h5>自定义过滤器</h5>
+{% load myfiter %}
+{{  age | MyAdd }}<br>
+{{ age | my_two_add:1}}<br>
+爱好：{{ hobby }}<br>
+第一个爱好：{{ hobby.0 }}<br>
+分数：{{ score}}<br>
+第一个分数：{{ score.php}}<br>
+第一个科目：{{ subject.0 }}
+<h2>if控制语句</h2>
+{% if age > 18 %}
+成年了就可以属于我了~
+{% elif age > 20 %}
+可以嫁人
+{% else %}
+刚好成年
+{% endif %}
+<h4>ifequal使用</h4>
+{% ifequal age 22 %}
+    <p>
+    年龄为22岁
+	{% endifequal %}
+</p>
+	{% ifequal age 20 %}
+    <p>
+	     20岁该结婚了
+    </p>
+	{% endifequal %}
+<h6>myjs</h6>
+{{ myjs | safe }}<br>
+
+<h3>for循环遍历列表</h3>
+{% for one in hobby %}
+    <p>
+	        {{ one }}
+    </p>
+    {% endfor %}
+<h4>循环字典</h4>
+	{% for key,value in score.items %}
+    <p>
+	    {{ key }}:{{ value }}
+	    </p>
+{% endfor %}
+
+<h2>forloop</h2>
+{% for one in hobby %}
+	    {#  forloop.counter  用于计数  #}
+	    <p>{{ forloop.counter }}.{{ one }}</p>
+	{% endfor %}
+
+	<h2>forloop if for 一起使用</h2>
+	{% for one in hobby %}
+	    {#  第一条  #}
+	    {% if forloop.first %}
+	        <p style="color: red">{{ one }}</p>
+	    {#  最后一条  #}
+	    {% elif forloop.last %}
+        <p style="color: blue">{{ one }}</p>
+	    {% else %}
+        <p style="color: green">{{ one }}</p>
+    {% endif %}
+	{% endfor %}
+
+</body>
+</html>
