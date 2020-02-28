@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block style %}
+    <script src="/static/js/vue.min.js"></script>
+    <script src="/static/js/vue-resource.js"></script>
+{% endblock %}
+{% block content %}
+    {% verbatim myblock %}
+        <div id="mycontent">
+     <table class="table">
+     <thead>
+        <tr>
+           <th> 商品编号 </th>
+           <th>商品名称</th>
+           <th>商品价格</th>
+           <th>商品数量</th>
+           <th>商品产+地</th>
+           <th>商品保质期</th>
+           <th>操作</th>
+        </tr>
+         </thead>
+         <tbody>
+
+         <tr v-for="one in goods_list">
+             <td>{{ one.goods_number }}</td>
+             <td>{{ one.goods_name }}  </td>
+             <td>{{ one.goods_price }} </td>
+             <td>{{ one.goods_count }} </td>
+             <td>{{ one.goods_location }}</td>
+             <td>{{ one.goods_safe_date }}</td>
+             <td>
+                 <button   class="btn   btn-facebook" > 修改 </button>
+             </td>
+         </tr>
+         { % endfor % }
+         </tbody>
+     </table>
+        </div>
+    {% endverbatim myblock %}
+{% endblock %}
+{% block script %}
+    <script>
+    Vue.use(VueResource);  //申明用的Vue
+    var vue=new Vue({
+        el:",#mycontent",
+        data:{
+            goods_list:[
+                {"goods_number":"00001","goods_name":"西瓜","goods_price":"10","goods_count":"100","goods_location":"河南","goods_safe_date":"10"},
+                {"goods_number":"00002","goods_name":"菠萝","goods_price":"30","goods_count":"300","goods_location":"河北","goods_safe_date":"20"},
+                {"goods_number":"00003","goods_name":"哈密瓜","goods_price":"20","goods_count":"200","goods_location":"北京","goods_safe_date":"30"}
+            ]
+        },  //加载页面时候执行
+       created:function () {
+            $.ajax(
+                {
+                    url:"http://127.0.0.1:8000/API/Goods/",
+                    data:"",
+                    type:"get",
+                    success:function (data) {
+                        console.log(data);
+
+
+                    },
+                    error:function (error) {
+                        console.log(error)
+
+
+                    }
+                }
+            )
+            
+        }
+        }
+
+    )
+
+    </script>
+
+{% endblock %}

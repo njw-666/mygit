@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue练习使用</title>
+    <script src="/static/js/vue.min.js"></script>
+
+</head>
+{% verbatim myblock %}
+<body>
+<div id="content"></div>
+<p>
+    年龄:{{ age }}
+    姓名:{{ name }}
+</p>
+{% endverbatim %}
+<script>
+    var vue=new Vue (
+        {
+            el:"#content",
+            data:"",
+            name:"小星星",
+            age:20
+        }
+    )
+
+
+</script>
+</body>
+</html>

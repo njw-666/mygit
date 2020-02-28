@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>来点我吧，有惊喜</title>
+    <script src="../static/vendor/jquery/jquery.min.js"></script>
+</head>
+<body>
+<h2>商品的名字</h2>
+<p id="content"></p>
+<script>
+    $.ajax({
+        url:"http://127.0.0.1:8000/loginuser/goods_list_api/5/1",
+        type:"get",
+        data:"",
+        success:function(data){
+            {#console.log(data);#}
+            console.log(data["data"]);
+
+            for ( var i in data["data"]){
+                console.log(i);    #下标i
+                console.log(data["data"][i]["goods_name"]);
+                var goods_name="<p>"+data["data"][i]["goods_name"]+"</p>";
+                $("#content").append(goods_name);
+
+        };
+            },
+                   error:function(error) {
+                       console.log(error)
+                   }
+        })
+</script>
+</body>

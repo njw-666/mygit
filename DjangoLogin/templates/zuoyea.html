@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <script src="/static/js/vue.min,js"></script>
+</head>
+<body>
+{% verbatim myblock %}
+<div id="content">
+    <p>
+        数据绑定
+        姓名：{{ name }}
+
+        年龄：{{ age }}
+    </p>
+    <p id="1" style="height:200px;color:blue">
+        属性的绑定
+    </p>
+    <p v-bind:id="id" v-vind:style="mystyle">
+     属性的绑定
+    </p>
+    <p v-if="flag">
+     判断绑定
+    </p >
+    <p v-for="php_list">
+        循坏绑定  {{ one }}
+    </p>
+    <p v-for="one in mylist">
+      循环绑定  {{ one.name }}
+        {{ one.age }}
+    </p>
+    <p v-on:click="print">
+     事件绑定
+    </p>
+</div>
+{% endverbatim myblock %}
+
+<script>
+    var vue= new Vue(
+        {
+            el:"#content",
+            data:{
+                name:"星星",
+                age:22,
+                id:200,
+                mystyle:"height:200px;color:blue",
+                flag:true,
+                php_list:[1,2,3,4],
+                mylist:[
+                    {"name":"兰兰","age":19},
+                     {"name":"花花","age":29},
+                    ]
+            },
+            methods:{
+                print:function () {
+                    alert("来吧")
+
+                }
+            }
+        }
+    )
+</script>
+</body>
+</html>
+<p>-------------------------------------------------------------</p>
+<<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+{#    <meta name="viewport"#}
+{#          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">#}
+{#    <meta http-equiv="X-UA-Compatible" content="ie=edge">#}
+    <title>vue的使用</title>
+    <script src="/static/js/vue.min.js"></script>
+</head>
+
+<body>
+{% verbatim myblock %}
+<div  id="content">
+<p>
+    数据绑定
+    姓名：{{ name }}
+    年龄：{{ age }}
+</p>
+<p id="1" style="height:300px;color:pink;">
+    属性的绑定
+
+</p>
+<p v-bind:id="id" v-bind:style="mystyle">
+    属性的绑定
+
+</p>
+<p v-if="flag">
+    判断绑定
+</p>
+<p v-for="one in python_list">
+    循环的绑定 {{ one }}
+
+</p>
+<p v-for ="one in mylist">
+    循坏的绑定{{ one.name }}
+    {{ one.age }}
+
+</p>
+<p v-on cilick="print">
+    点击事件的绑定
+</p>
+</div>
+{% endverbatim myblock %}
+</body>
+<script>
+  var vue=new Vue(
+      {
+          el:"",
+          data:{
+              name:"meizhi",
+              age:"18",
+              id:600,
+              mystyle:"height:300px;color:pink;",
+              flag:false,
+             python_list:[1,2,3,4,5,6],
+              mylist:[
+                  {"name":"meizhi","age":24},
+                  {"name":"jingjing","age":22},
+              ]
+          },
+          methods:{
+              print function () {
+                  alert("laiba")
+
+              }
+          }
+      }
+  )
+</script>
+</html>

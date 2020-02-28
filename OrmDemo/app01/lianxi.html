@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax demo </title>
+    <script src="/static/js/jquery.min.js"></script>
+</head>
+<body>
+<button id="btn">点我看看</button>
+</body>
+<script>
+    $("#btn").click(
+        function () {
+            $.ajax({
+	                {#url:"",     //  ajax 请求的地址  #}
+                type:"",    //   请求的方式  get  post
+                data:"",    // 请求的数据   常用与post请求的时候传参，get请求的时候参数需要构建在url上即可
+                success:function (data) {
+                   //  代表 请求成功被服务器处理了之后回调的方法
+                    //   data  代表 服务器处理之后的返回值  	        },
+                error:function (error) {
+                    //  请求失败之后的方法
+                    //  error   代表 错误的内容
+                  }
+            })
+	        }
+    )
+</script>
+</html>
+
+
+<p>______________________</p>
+
+
+<p>
+    <h2>常规样式</h2>
+    {{ userform }}
+    <hr>
+</p>
+
+<p>
+    <h2>p标签样式</h2>
+    {{ userform.as_p }}
+    <hr>
+</p>
+
+<p>
+    <h2>ul标签样式</h2>
+    {{ userform.as_ul }}
+    <hr>
+</p>
+
+<p>
+    <h2>table标签样式</h2>
+    {{ userform.as_table }}
+    <hr>
+</p>
+
+
+<p>______________________</p>
+
+
+<div>
+    <h2>自定义样式</h2>
+    <table>
+        {% for one in userform %}
+        <tr>
+            <th>{{ one.label }}</th>
+            <td>{{ one }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+
+<p>______________________</p>
+
+	<!DOCTYPE html>
+	<html lang="en">
+	<head>  	    <meta charset="UTF-8">
+	    <title>ajax_register</title>
+	    <script src="/static/js/jquery.min.js"></script>  	</head>
+	<body>  	<form action="">
+	    账号： <input id="username" type="text" name="username"> <span id="spancontent"></span><br>
+	    密码： <input type="password" name="password"> <br>
+	    <input type="submit" value="提交">
+	</form>
+
+	<script>
+	    //   blur  失去焦点的事件
+	    $("#username").blur(
+        function () {
+	            // console.log(111111);
+	            var username = $("#username").val() // 获取用户输入的账号内容
+	            // console.log(username)
+	            var url = "http://127.0.0.1:8000/article/ajax_get_req/?username=" + username;
+	            $.ajax({
+	                url:url,
+                type:"get",
+               data:"",
+                success:function (data) {
+                    console.log(data);
+                    // 将结果现在是span标签内
+                    $("#spancontent").text(data["msg"]);
+	                },
+                error:function (error) {
+                   console.log(error);
+	                }
+	            })
+	        }
+	    )
+
+	</script>
+	</body>
+	</html>
+
+
+
+
+
