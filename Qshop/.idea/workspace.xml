@@ -3931,7 +3931,7 @@
       <path value="$PROJECT_DIR$/static/seller/vendor/fontawesome-free/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds">
     <option name="x" value="122" />
     <option name="y" value="20" />
     <option name="width" value="1575" />
