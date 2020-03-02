@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue练习使用</title>
+    <script src="/static/js/vue.min.js"></script>
+
+</head>
+
+<body>
+{#数据的绑定#}
+{#   数据的绑定    {{ }}#}
+{#   属性的绑定    v-bind#}
+{#   判断的绑定    v-if#}
+{#   循环          v-for#}
+{#   事件          v-on#}
+
+{% verbatim myblock %}
+<div id="content">
+<p>
+        数据绑定
+    姓名:{{ name }}
+    年龄:{{ age }}
+</p >
+<P id="1" style="height:600px;width:600px;color:yellow;">
+    id属性的绑定
+</P>
+<p v-bind:id="id" v-bind:style="mystyle">
+    属性的绑定
+</p>
+    <p v-if="flag">
+        判断绑定
+
+    </p>
+    <!-- 判断绑定，从data数据中取出 flag 的值进行判断，如果为true 则显示下面的内容-->
+<p v-for="one in php_list">
+
+    循坏绑定 {{ one }}
+</p>
+<p v-on:click="print">
+    点击事件绑定
+</p>
+<p v-for="one in mylist">
+    循环绑定  {{ one }}
+    {{ one.name }}
+    {{ one.age }}
+
+</p>
+</div>
+{% endverbatim myblock %}
+<script>
+    var vue = new Vue({
+        el:"#content",
+        data:{
+            name:"小星星",
+            age:20,
+            id:600,
+            mystyle:"height:600px;width:600px;color:yellow;",
+            flag:false,
+            php_list:[1,2,3],
+            mylist:[
+	                    {"name":"zhangsan","age":19},
+	                    {"name":"lisi","age":119},
+	                    {"name":"waangwu","age":29},
+	                ]  ,
+
+            methods:{
+                print:function () {
+                 alert("okay")
+
+
+                }
+            }
+
+        }
+    })
+</script>
+</body>
+</html>
