@@ -36,3 +36,28 @@ class OrderInfo(models.Model):
 
 
 
+class Cart(models.Model):
+    goods = models.ForeignKey(to=Goods,on_delete=models.CASCADE)
+    goods_number = models.IntegerField(verbose_name="商品的数量")
+    goods_total = models.FloatField(verbose_name="商品的小计")
+    # goods_price = models.FloatField()
+    cart_user = models.ForeignKey(to=LoginUser,on_delete=models.CASCADE,verbose_name="买家")
+    class Meta:
+
+        db_table = "cart"
+
+
+class UserAddress(models.Model):
+    name = models.CharField(max_length=32,verbose_name="收货人姓名")
+    phone = models.CharField(max_length=11,verbose_name="收货人手机号")
+    address = models.TextField(verbose_name="收货人手机号")
+    user = models.ForeignKey(to=LoginUser,on_delete=models.CASCADE)
+    status = models.IntegerField(verbose_name="地址状态",default=0)  ### 1
+
+class PayorderAddress(models.Model):
+    name = models.CharField(max_length=32,verbose_name="收货人姓名")
+    phone = models.CharField(max_length=11,verbose_name="收货人手机号")
+    address= models.TextField(verbose_name="收货人地址")
+    payorder=models.OneToOneField(to=PayOrder,on_delete=models.CASCADE)
+
+

@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>{% block title %}管理系统 {% endblock %}</title>
+  <title>{% block title %}管理系统{% endblock %}</title>
 
   <!-- Custom fonts for this template-->
   <link href="/static/seller/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -17,7 +17,8 @@
 
   <!-- Custom styles for this template-->
   <link href="/static/seller/css/sb-admin-2.min.css" rel="stylesheet">
-{% block style %} {% endblock %}
+{% block style%}{% endblock %}
+
 </head>
 
 <body id="page-top">
@@ -39,23 +40,17 @@
       <!-- Divider -->
       <hr class="sidebar-divider my-0">
 
-      <!-- Divider -->
-{#      <hr class="sidebar-divider my-0">#}
-
-
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
-{#        <a class="nav-link" href="index.html">#}
-            <a class="nav-link" href="/seller/index/">
+        <a class="nav-link" href="/seller/index/">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>首页</span></a>
       </li>
 
       <!-- Divider -->
       <hr class="sidebar-divider">
-        <li class="nav-item">
-{#        <a class="nav-link" href="index.html">#}
-            <a class="nav-link" href="/seller/goods_add/">
+              <li class="nav-item">
+        <a class="nav-link" href="/seller/user_profile/">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>个人中心</span></a>
       </li>
@@ -63,12 +58,14 @@
       <!-- Divider -->
       <hr class="sidebar-divider">
 
+
       <!-- Heading -->
       <div class="sidebar-heading">
-       商品信息
+        商品信息
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-fw fa-cog"></i>
           <span>商品信息</span>
@@ -76,73 +73,36 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">商品信息</h6>
-            <a class="collapse-item" href="/seller/goods_list/1/1/">在售商品</a><br>
+            <a class="collapse-item" href="/seller/goods_list/1/1/">在售商品</a>
             <a class="collapse-item" href="/seller/goods_list/1/0/">下架商品</a>
           </div>
         </div>
       </li>
 
-      <!-- Nav Item - Utilities Collapse Menu -->
-{#      <li class="nav-item">#}
-{#        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">#}
-{#          <i class="fas fa-fw fa-wrench"></i>#}
-{#          <span>Utilities</span>#}
-{#        </a>#}
-{#        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">#}
-{#          <div class="bg-white py-2 collapse-inner rounded">#}
-{#            <h6 class="collapse-header">Custom Utilities:</h6>#}
-{#            <a class="collapse-item" href="utilities-color.html">Colors</a>#}
-{#            <a class="collapse-item" href="utilities-border.html">Borders</a>#}
-{#            <a class="collapse-item" href="utilities-animation.html">Animations</a>#}
-{#            <a class="collapse-item" href="utilities-other.html">Other</a>#}
-{#          </div>#}
-{#        </div>#}
-{#      </li>#}
-{##}
-{#      <!-- Divider -->#}
-{#      <hr class="sidebar-divider">#}
-{##}
-{#      <!-- Heading -->#}
-{#      <div class="sidebar-heading">#}
-{#        Addons#}
-{#      </div>#}
-{##}
-{#      <!-- Nav Item - Pages Collapse Menu -->#}
-{#      <li class="nav-item active">#}
-{#        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">#}
-{#          <i class="fas fa-fw fa-folder"></i>#}
-{#          <span>Pages</span>#}
-{#        </a>#}
-{#        <div id="collapsePages" class="collapse show" aria-labelledby="headingPages" data-parent="#accordionSidebar">#}
-{#          <div class="bg-white py-2 collapse-inner rounded">#}
-{#            <h6 class="collapse-header">管理后台</h6>#}
-{#            <a class="collapse-item" href="loginn.html">Login</a>#}
-{#            <a class="collapse-item" href="register.html">Register</a>#}
-{#            <a class="collapse-item" href="forgot-password.html">Forgot Password</a>#}
-{#            <div class="collapse-divider"></div>#}
-{#            <h6 class="collapse-header">Other Pages:</h6>#}
-{#            <a class="collapse-item" href="404.html">404 Page</a>#}
-{#            <a class="collapse-item active" href="base.html">Blank Page</a>#}
-{#          </div>#}
-{#        </div>#}
-{#      </li>#}
 
-      <!-- Nav Item - Charts -->
-{#      <li class="nav-item">#}
-{#        <a class="nav-link" href="charts.html">#}
-{#          <i class="fas fa-fw fa-chart-area"></i>#}
-{#          <span>Charts</span></a>#}
-{#      </li>#}
-{##}
-{#      <!-- Nav Item - Tables -->#}
-{#      <li class="nav-item">#}
-{#        <a class="nav-link" href="tables.html">#}
-{#          <i class="fas fa-fw fa-table"></i>#}
-{#          <span>Tables</span></a>#}
-{#      </li>#}
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        订单信息
+      </div>
 
-      <!-- Divider -->
-      <hr class="sidebar-divider d-none d-md-block">
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseTwo">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>订单信息</span>
+        </a>
+        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">订单信息</h6>
+            <a class="collapse-item" href="/seller/order/?status=1">待付款</a>
+            <a class="collapse-item" href="/seller/order/?status=2">已付款商品</a>
+            <a class="collapse-item" href="/seller/order/?status=4">已发货商品</a>
+          </div>
+        </div>
+      </li>
+
+
+
 
       <!-- Sidebar Toggler (Sidebar) -->
       <div class="text-center d-none d-md-inline">
@@ -311,7 +271,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{request.COOKIES.email}}</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ request.COOKIES.email }}</span>
                 <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
               </a>
               <!-- Dropdown - User Information -->
@@ -329,9 +289,9 @@
                   Activity Log
                 </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="/seller/loginout/" >
+                <a class="dropdown-item" href="/seller/logout/" >
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-             退出系统
+                  退出
                 </a>
               </div>
             </li>
@@ -343,12 +303,11 @@
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
-            {% block content %}
-
 
           <!-- Page Heading -->
+            {% block content %}
           <h1 class="h3 mb-4 text-gray-800">Blank Page</h1>
-         {% endblock %}
+            {% endblock %}
         </div>
         <!-- /.container-fluid -->
 
@@ -389,23 +348,24 @@
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="loginn.html">Logout</a>
+          <a class="btn btn-primary" href="login.html">Logout</a>
         </div>
       </div>
     </div>
   </div>
 
   <!-- Bootstrap core JavaScript-->
-  <script src="/static/vendor/jquery/jquery.min.js"></script>
-  <script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/static/seller/vendor/jquery/jquery.min.js"></script>
+  <script src="/static/seller/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Core plugin JavaScript-->
-  <script src="/static/vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="/static/seller/vendor/jquery-easing/jquery.easing.min.js"></script>
 
   <!-- Custom scripts for all pages-->
-  <script src="/static/js/sb-admin-2.min.js"></script>
-{% block srcipt %}
+  <script src="/static/seller/js/sb-admin-2.min.js"></script>
+{% block script %}
 {% endblock %}
+
 </body>
 
 </html>

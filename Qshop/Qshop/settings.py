@@ -30,6 +30,7 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -37,11 +38,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'Seller',
     'Buyer',
+    'Seller',
+    # 'djcelery'
 ]
 
+
 MIDDLEWARE = [
+    # 'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -49,8 +53,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'Qshop.middleware01.MiddleWareTest',
+    # 'django.middleware.cache.FetchFromCacheMiddleware',
 ]
-
 ROOT_URLCONF = 'Qshop.urls'
 
 TEMPLATES = [
@@ -85,6 +90,42 @@ DATABASES = {
         'PORT':'3306',
     }
 }
+
+
+
+
+
+#
+# DATABASES={
+#     'default':{
+#         'ENGINE':'django.db.backends.sqlite3',
+#         'NAME':os.path.join(BASE_DIR,'db.sqlite3'),
+#
+#
+# },
+#      'slave': {
+#          'ENGINE':'django.db.backends.sqlite3',
+#          'NAME':os.path.join(BASE_DIR,'dbslave.sqlites'),
+#
+# },
+# # 'slave1': {
+#          'ENGINE':'django.db.backends.sqlite3',
+#          'NAME':os.path.join(BASE_DIR,'dbslave1.sqlites'),
+#
+# },
+# 'master': {
+#          'ENGINE':'django.db.backends.sqlite3',
+#          'NAME':os.path.join(BASE_DIR,'dbmaster.sqlites'),
+#
+# },
+
+
+# }
+
+# DATABASES_ROUTER=["Qshop.newdb.Router"]
+
+
+
 
 
 # Password validation
@@ -159,3 +200,53 @@ alipay =AliPay(
     sign_type="RSA2",
     debug=False
 )
+
+
+#3配置
+import djcelery  #导包
+djcelery.setup_loader()  #模块加载
+BROKER_URL="redis://127.0.0.1:6379/1"  #指定broker位置
+CELERY_IMPORTS=("CeleryTask.tasks")
+CELERY_TIMEZONE = 'Asia/Shanghai'
+CELERYBEAT_SCHEDULER="django.schedulers.DatabaseScheduler"
+
+
+from celery.schedules import timedelta,crontab
+CELERYBEAT_SCHEDULE = {
+    u"测试01":{
+        "task":"CeleryTask.tasks.Test",         ### 定时任务要是执行的任务
+        # "schedule":timedelta(seconds=2)        ## 每两秒执行一次
+        # "schedule":crontab(hour=2)        ## 每两小时执行一次
+        "schedule":crontab(minute=2)        ## 每两分钟时执行一次
+    }
+}
+
+## 缓存
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'LOCATION':[
+            "127.0.0.1:11211"        ###使用本地的memcache 缓存
+        ]
+    }
+}
+
+## Django 日志配置
+LOGGING = {
+    'version':1,     ## 版本
+    'disable_exsiting_loggers':True,       ### 禁用已经存在的logging 模块
+    'handlers':{           ###    放置句柄的地方
+        'file':{
+            'level':"WARNING",       ### 代表要收集到  文件中的日志等级、
+            'class':'logging.FileHandler',
+            'filename':os.path.join(BASE_DIR,"django.log"),    ## 日志收集在  django.log 文件中
+            'encoding':"utf-8"
+        }
+    },
+    'loggers':{      ####  收集日志
+        'django':{      ###  收集日志
+            'handlers':["file"],
+            'level':"DEBUG"        ### django 这个收集器收集的日志等级
+        }
+    }
+}

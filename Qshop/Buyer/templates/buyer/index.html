@@ -53,12 +53,12 @@
 		</div>
 
 		<div class="goods_con clearfix">
-			<div class="goods_banner fl"><img src="/static/{{ one.type.type_picture }}"></div>
+			<div class="goods_banner fl"><img src="/static/{{one.type.type_picture}}"></div>
 			<ul class="goods_list fl">
                 {% for goods in one.goods_list %}
 				    <li>
 					<h4><a href="#">{{ goods.goods_name }}</a></h4>
-					<a href="/buyer/goods_detail/?goods_di={{ goods.id }}"><img src="/static/ {{ goods.goods_picture }} "></a>
+					<a href="/buyer/goods_detail/?goods_id={{ goods.id }}"><img src="/static/{{ goods.goods_picture }} "></a>
 					<div class="prize">{{ goods.goods_price }}</div>
 				    </li>
 			  {% endfor %}
